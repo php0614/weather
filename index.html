@@ -374,9 +374,9 @@ function buildGlobe(texture) {
     new THREE.ShaderMaterial({ uniforms, vertexShader: VERT, fragmentShader: FRAG })
   );
 
-  // Initial rotation so lon -0.3 (Greenwich/London) faces forward
-  globe.rotation.y = 2.79;
-  globe.rotation.x = -0.45;
+  // Initial rotation so lon 12.5°E (Italy) faces forward
+  globe.rotation.y = 2.57;
+  globe.rotation.x = -0.73;
   scene.add(globe);
 
   // City pin markers
