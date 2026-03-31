@@ -304,7 +304,8 @@ varying vec3  vPos;
 void main() {
   vec4  s    = texture2D(tex, vUv);
   float gray = dot(s.rgb, vec3(0.299, 0.587, 0.114));
-  vec3  col  = vec3(gray * 0.95 + 0.02);   // slight lift
+  // Muted realistic colors: mix between full color and grayscale
+  vec3  col  = mix(vec3(gray), s.rgb, 0.45) * 0.95 + 0.02;
 
   // City regions — smooth highlight
   float d0 = dot(vPos, p0);
@@ -432,9 +433,9 @@ function makeFallbackTexture() {
   c.width = 1024; c.height = 512;
   const ctx = c.getContext('2d');
   // Ocean
-  ctx.fillStyle = '#1a3050'; ctx.fillRect(0, 0, 1024, 512);
+  ctx.fillStyle = '#1a4060'; ctx.fillRect(0, 0, 1024, 512);
   // Simple land approximation
-  ctx.fillStyle = '#2d4a2d';
+  ctx.fillStyle = '#4a6741';
   // North America
   ctx.fillRect(50, 80, 170, 200);
   // South America
